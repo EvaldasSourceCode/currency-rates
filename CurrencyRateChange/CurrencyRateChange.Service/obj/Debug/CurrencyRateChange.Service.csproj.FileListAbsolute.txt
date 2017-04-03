@@ -1,0 +1,7 @@
+c:\users\evald\documents\visual studio 2017\Projects\CurrencyRateChange\CurrencyRateChange.Service\obj\Debug\CurrencyRateChange.Service.csprojResolveAssemblyReference.cache
+c:\users\evald\documents\visual studio 2017\Projects\CurrencyRateChange\CurrencyRateChange.Service\bin\Debug\CurrencyRateChange.Service.dll
+c:\users\evald\documents\visual studio 2017\Projects\CurrencyRateChange\CurrencyRateChange.Service\bin\Debug\CurrencyRateChange.Service.pdb
+c:\users\evald\documents\visual studio 2017\Projects\CurrencyRateChange\CurrencyRateChange.Service\bin\Debug\Newtonsoft.Json.dll
+c:\users\evald\documents\visual studio 2017\Projects\CurrencyRateChange\CurrencyRateChange.Service\bin\Debug\Newtonsoft.Json.xml
+c:\users\evald\documents\visual studio 2017\Projects\CurrencyRateChange\CurrencyRateChange.Service\obj\Debug\CurrencyRateChange.Service.dll
+c:\users\evald\documents\visual studio 2017\Projects\CurrencyRateChange\CurrencyRateChange.Service\obj\Debug\CurrencyRateChange.Service.pdb

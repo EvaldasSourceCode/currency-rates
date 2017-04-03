@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "CurrencyRates";
+}
+
+<h3>Currency Rates</h3>
+
+<input data-bind="value: date" />
+
+<button data-bind="click: show">Show</button> 
+
+<table style="margin-top:20px">
+    <thead>
+        <tr>
+            <th>Currency</th>
+            <th>Rate Yesterday</th>
+            <th>Rate Today</th>
+            <th>Rate Change</th>
+        </tr>
+    </thead>
+    <tbody data-bind="foreach: rateChanges">
+        <tr>
+            <td data-bind="text: currency"></td>     
+            <td data-bind="text: rateBeforeDay"></td>     
+            <td data-bind="text: rateToday"></td>     
+            <td data-bind="text: rateChange"></td>     
+        </tr>
+    </tbody>
+</table>
+
+<script type="text/javascript">
+        function UserActionViewModel() {
+            var self = this;
+
+            self.date = ko.observable('2014-04-14');
+            self.rateChanges = ko.observableArray([]);
+
+            self.show = function () {
+                $.ajax({
+                    url: "rates/" + self.date(),
+                    type: "GET",
+                    data: {
+
+                    },
+                    success: function (data) {
+                        self.rateChanges($.map(data, function (rateChange) {
+                            return new CurrencyRateChangeViewModel(rateChange);
+                        }));
+                    },
+                    error: function (jqXHR, exception) {
+                        alert("Not OK!")
+                    }
+                })
+            }
+        };
+
+        function CurrencyRateChangeViewModel(data) {
+            var self = this;
+            self.currency = ko.observable(data.currency);
+            self.rateBeforeDay = ko.observable(data.beforeCurrency.rate);
+            self.rateToday = ko.observable(data.todayCurrency.rate);
+            self.rateChange = ko.observable(data.rateChange);            
+        };
+
+        ko.applyBindings(new UserActionViewModel())
+</script>
