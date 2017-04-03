@@ -48,7 +48,15 @@
                         }));
                     },
                     error: function (jqXHR, exception) {
-                        alert("Not OK!")
+                        console.log(jqXHR.responseText);
+
+                        var message = jqXHR.statusText;
+
+                        if (jqXHR.responseJSON) {
+                            message = message + ":\n" + jqXHR.responseJSON.message;
+                        }                        
+
+                        alert(message);
                     }
                 })
             }
@@ -59,7 +67,7 @@
             self.currency = ko.observable(data.currency);
             self.rateBeforeDay = ko.observable(data.beforeCurrency.rate);
             self.rateToday = ko.observable(data.todayCurrency.rate);
-            self.rateChange = ko.observable(data.rateChange);            
+            self.rateChange = ko.observable(data.rateChange);
         };
 
         ko.applyBindings(new UserActionViewModel())

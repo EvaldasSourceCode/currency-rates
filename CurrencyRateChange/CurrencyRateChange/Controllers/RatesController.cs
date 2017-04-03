@@ -1,8 +1,5 @@
 ﻿using CurrencyRateChange.Service.Currency;
 using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using WebApi.OutputCache.V2;
@@ -26,14 +23,14 @@ namespace CurrencyRateChange.Controllers
         {
             DateTime dateTime;
 
-            if (DateTime.TryParse(date, out dateTime))
+            if (!DateTime.TryParse(date, out dateTime) || dateTime >= DateTime.Parse("2015-01-01"))
             {
                 return BadRequest("Invalid date format");
             }
 
             var results = await currencyService.GetCurrencyRateChangesByDate(dateTime);
 
-            return Request.CreateResponse(HttpStatusCode.OK, results);
+            return Ok(results);
         }
     }
 }
